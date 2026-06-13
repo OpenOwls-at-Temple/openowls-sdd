@@ -37,7 +37,7 @@
 
 - One component per file in React
 - File name must match the component name exactly
-- Test files live next to the file they test, named `[filename].test.js`
+- Test files live in a dedicated `tests/` folder mirroring the source layout (e.g. `backend/tests/`)
 - All API route files named after the resource they handle (e.g. `tasks.py`)
 
 ---

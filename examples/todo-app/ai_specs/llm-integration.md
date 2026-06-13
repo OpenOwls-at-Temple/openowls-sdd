@@ -26,7 +26,7 @@
 | Setting | Value |
 |---------|-------|
 | Provider | _e.g. Anthropic_ |
-| Model | _e.g. claude-sonnet-4-20250514_ |
+| Model | _e.g. claude-sonnet-4-6_ |
 | Why this model | _e.g. Best balance of reasoning quality and cost for our use case_ |
 | Called from | _e.g. Backend service layer only — never directly from the frontend_ |
 | API key location | _e.g. Server-side environment variable `ANTHROPIC_API_KEY`_ |

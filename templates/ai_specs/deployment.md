@@ -11,7 +11,7 @@
 
 | Environment | Purpose | URL |
 |-------------|---------|-----|
-| Local | Development and testing on your own machine | `http://localhost:3000` |
+| Local | Development and testing on your own machine | `http://localhost:5173` |
 | Staging | Pre-production testing, shared with the team | _e.g. `https://app-staging.vercel.app`_ |
 | Production | Live application for real users | _e.g. `https://app.vercel.app`_ |
 

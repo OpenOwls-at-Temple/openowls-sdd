@@ -28,6 +28,7 @@ project-root/
 │   │   ├── hooks/          # Custom React hooks
 │   │   ├── services/       # API call functions
 │   │   └── utils/          # Helper functions
+│   ├── tests/              # Frontend unit/component tests
 │   └── public/
 ├── backend/
 │   ├── app/
@@ -80,7 +81,7 @@ project-root/
 ## LLM Integration
 <!-- If the project uses an LLM, describe how it is integrated. -->
 
-- **Model:** _e.g. claude-sonnet-4-20250514_
+- **Model:** _e.g. claude-sonnet-4-6_
 - **Called from:** _e.g. backend service layer only_
 - **Input:** _What context/data is passed to the LLM?_
 - **Output:** _What does the LLM return?_

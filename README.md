@@ -19,8 +19,8 @@ Most student projects have one role: "developer." OpenOwls SDD introduces a diff
 | `architecture-planning.md` | System architect designing the technical approach |
 | `domain-knowledge.md` | Domain expert briefing the engineering team |
 | `conventions.md` | Engineering lead setting team standards |
-| `llm-integration.md` | AI/ML engineer designing the intelligence layer |
 | `deployment.md` | DevOps engineer owning the release pipeline |
+| `llm-integration.md` | AI/ML engineer designing the intelligence layer |
 | `progress.md` | Engineering team's daily standup and sprint tracker |
 
 Every OpenOwls project includes an LLM layer — `llm-integration.md` is a first-class file, not optional.

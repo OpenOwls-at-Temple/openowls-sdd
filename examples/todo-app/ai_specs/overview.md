@@ -57,7 +57,7 @@ _Describe the problem here._
 | Frontend | _e.g. React 18_ | |
 | Backend | _e.g. FastAPI (Python)_ | |
 | Database | _e.g. PostgreSQL_ | |
-| AI / LLM | _e.g. Claude claude-sonnet-4-20250514 via Anthropic API_ | |
+| AI / LLM | _e.g. Claude claude-sonnet-4-6 via Anthropic API_ | |
 | Hosting | _e.g. Vercel (frontend), Render (backend)_ | |
 
 ---
