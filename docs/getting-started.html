@@ -408,6 +408,8 @@
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">architecture-planning.md</span> <span class="ft-note">← folder structure, design decisions, API</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">domain-knowledge.md</span>      <span class="ft-note">← terminology, business rules, constraints</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">conventions.md</span>           <span class="ft-note">← coding style, git rules, testing requirements</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">llm-integration.md</span>       <span class="ft-note">← prompts, context, evaluation, failure modes</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">auth-security.md</span>         <span class="ft-note">← users, identity, auth, data protection, threats</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="ft-file">deployment.md</span>            <span class="ft-note">← hosting, environment variables, deploy steps</span></div>
     </div>
 
@@ -446,6 +448,16 @@
         <div class="fc-name">ai_specs/conventions.md</div>
         <div class="fc-audience">Audience: Engineer / AI Assistant</div>
         <p>Naming conventions, code style, git branch rules, testing requirements, and rules for Claude Code behavior.</p>
+      </div>
+      <div class="file-card">
+        <div class="fc-name">ai_specs/llm-integration.md</div>
+        <div class="fc-audience">Audience: AI/ML Engineer</div>
+        <p>Prompt design, context management, model choices, evaluation strategy, and failure modes for the project's LLM layer.</p>
+      </div>
+      <div class="file-card">
+        <div class="fc-name">ai_specs/auth-security.md</div>
+        <div class="fc-audience">Audience: Security Engineer</div>
+        <p>User model and scale, identity strategy, authentication, authorization, account lifecycle, data protection, and common threats.</p>
       </div>
       <div class="file-card">
         <div class="fc-name">ai_specs/deployment.md</div>
@@ -494,6 +506,16 @@
           <td>conventions.md</td>
           <td><span class="badge badge-faculty">Faculty</span></td>
           <td>Provided as a template to ensure consistency across all student projects</td>
+        </tr>
+        <tr>
+          <td>llm-integration.md</td>
+          <td><span class="badge badge-student">Students</span></td>
+          <td>Students design the LLM layer — prompts, context, and evaluation — as a core technical exercise</td>
+        </tr>
+        <tr>
+          <td>auth-security.md</td>
+          <td><span class="badge badge-student">Students</span></td>
+          <td>Students decide the user model, identity strategy, and security posture before writing auth code</td>
         </tr>
         <tr>
           <td>deployment.md</td>
@@ -654,6 +676,11 @@
           <td>llm-integration.md</td>
           <td>AI/ML engineer designing the intelligence layer</td>
           <td>How to think rigorously about prompts, context, evaluation, and failure modes</td>
+        </tr>
+        <tr>
+          <td>auth-security.md</td>
+          <td>Security engineer protecting users and data</td>
+          <td>How to reason about identity, access control, and threats before they become incidents</td>
         </tr>
         <tr>
           <td>deployment.md</td>
