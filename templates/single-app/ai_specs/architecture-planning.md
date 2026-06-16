@@ -79,13 +79,12 @@ project-root/
 ---
 
 ## LLM Integration
-<!-- If the project uses an LLM, describe how it is integrated. -->
+<!-- LLM-specific details — model choice, prompts, context strategy, guardrails, and evaluation —
+     live in `ai_specs/llm-integration.md`. Keep this section to where the LLM layer plugs into
+     the architecture; do not duplicate the full integration plan here. -->
 
-- **Model:** _e.g. claude-sonnet-4-6_
-- **Called from:** _e.g. backend service layer only_
-- **Input:** _What context/data is passed to the LLM?_
-- **Output:** _What does the LLM return?_
-- **Prompt location:** _e.g. `/backend/app/llm/prompts.py`_
+- **Where the LLM layer lives:** _e.g. backend service layer (`/backend/app/llm/`), called server-side only_
+- **Full details:** see `ai_specs/llm-integration.md`
 
 ---
 

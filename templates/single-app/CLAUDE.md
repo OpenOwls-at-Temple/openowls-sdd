@@ -9,9 +9,10 @@
 3. **`ai_specs/features.md`** — understand the full feature scope and which phase we are currently in
 4. **`ai_specs/architecture-planning.md`** — understand folder structure, design decisions, and implementation details
 5. **`ai_specs/domain-knowledge.md`** — understand domain-specific concepts and constraints
-6. **`ai_specs/conventions.md`** — follow all coding conventions, naming rules, and workflow standards without exception
-7. **`ai_specs/deployment.md`** — understand hosting platforms, environment variables, and deployment process
-8. **`ai_specs/llm-integration.md`** — understand the LLM's role, prompt design, architecture, and evaluation criteria
+6. **`ai_specs/llm-integration.md`** — understand the LLM's role, model choice, prompt design, context strategy, and guardrails
+7. **`ai_specs/conventions.md`** — follow all coding conventions, naming rules, and workflow standards without exception
+8. **`ai_specs/auth-security.md`** — understand the user model, identity strategy, authentication, authorization, data protection, and threats
+9. **`ai_specs/deployment.md`** — understand hosting platforms, environment variables, and deployment process
 
 ## General Instructions
 

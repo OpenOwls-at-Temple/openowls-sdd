@@ -407,8 +407,8 @@
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">features.md</span>              <span class="ft-note">← Phase 1 / 2 / 3 feature definitions</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">architecture-planning.md</span> <span class="ft-note">← folder structure, design decisions, API</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">domain-knowledge.md</span>      <span class="ft-note">← terminology, business rules, constraints</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">llm-integration.md</span>       <span class="ft-note">← model choice, prompts, context strategy, guardrails</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">conventions.md</span>           <span class="ft-note">← coding style, git rules, testing requirements</span></div>
-      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">llm-integration.md</span>       <span class="ft-note">← prompts, context, evaluation, failure modes</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">auth-security.md</span>         <span class="ft-note">← users, identity, auth, data protection, threats</span></div>
       <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="ft-file">deployment.md</span>            <span class="ft-note">← hosting, environment variables, deploy steps</span></div>
     </div>
@@ -437,7 +437,7 @@
       <div class="file-card">
         <div class="fc-name">ai_specs/architecture-planning.md</div>
         <div class="fc-audience">Audience: Architect / Engineer</div>
-        <p>Folder structure, design decisions, data models, API endpoints, LLM integration plan, and environment variables.</p>
+        <p>Folder structure, design decisions, data models, and API endpoints. For LLM-specific integration details, see <code>llm-integration.md</code>.</p>
       </div>
       <div class="file-card">
         <div class="fc-name">ai_specs/domain-knowledge.md</div>
@@ -445,14 +445,14 @@
         <p>Domain terminology, business rules, common pitfalls, and external dependencies the AI needs to know upfront.</p>
       </div>
       <div class="file-card">
+        <div class="fc-name">ai_specs/llm-integration.md</div>
+        <div class="fc-audience">Audience: Engineer / Faculty</div>
+        <p>Model choice and justification, system prompt, prompt templates per feature, context strategy, guardrails, and cost considerations.</p>
+      </div>
+      <div class="file-card">
         <div class="fc-name">ai_specs/conventions.md</div>
         <div class="fc-audience">Audience: Engineer / AI Assistant</div>
         <p>Naming conventions, code style, git branch rules, testing requirements, and rules for Claude Code behavior.</p>
-      </div>
-      <div class="file-card">
-        <div class="fc-name">ai_specs/llm-integration.md</div>
-        <div class="fc-audience">Audience: AI/ML Engineer</div>
-        <p>Prompt design, context management, model choices, evaluation strategy, and failure modes for the project's LLM layer.</p>
       </div>
       <div class="file-card">
         <div class="fc-name">ai_specs/auth-security.md</div>
@@ -503,14 +503,14 @@
           <td>Faculty seeds domain concepts. Students research and expand throughout the project.</td>
         </tr>
         <tr>
+          <td>llm-integration.md</td>
+          <td><span class="badge badge-both">Faculty + Students</span></td>
+          <td>Faculty defines model choice and guardrails. Students design the prompt templates and context strategy for each feature.</td>
+        </tr>
+        <tr>
           <td>conventions.md</td>
           <td><span class="badge badge-faculty">Faculty</span></td>
           <td>Provided as a template to ensure consistency across all student projects</td>
-        </tr>
-        <tr>
-          <td>llm-integration.md</td>
-          <td><span class="badge badge-student">Students</span></td>
-          <td>Students design the LLM layer — prompts, context, and evaluation — as a core technical exercise</td>
         </tr>
         <tr>
           <td>auth-security.md</td>
@@ -668,14 +668,14 @@
           <td>How to research a problem space and surface the constraints that shape implementation</td>
         </tr>
         <tr>
-          <td>conventions.md</td>
-          <td>Engineering lead setting team standards</td>
-          <td>Why consistency matters across a codebase and how to enforce it</td>
-        </tr>
-        <tr>
           <td>llm-integration.md</td>
           <td>AI/ML engineer designing the intelligence layer</td>
           <td>How to think rigorously about prompts, context, evaluation, and failure modes</td>
+        </tr>
+        <tr>
+          <td>conventions.md</td>
+          <td>Engineering lead setting team standards</td>
+          <td>Why consistency matters across a codebase and how to enforce it</td>
         </tr>
         <tr>
           <td>auth-security.md</td>
