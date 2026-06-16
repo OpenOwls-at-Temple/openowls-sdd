@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenOwls SDD — Suite Edition (Multi-Package Monorepo)</title>
+  <meta name="description" content="The OpenOwls SDD Suite Edition — applying Spec-Driven Development to a monorepo of stacked, multi-package libraries with a two-tier spec structure." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS (matched to OpenOwls site) ── */
+    :root {
+      --navy:       #0B1120;
+      --navy-mid:   #111827;
+      --navy-card:  #1a2235;
+      --cherry:     #E53E3E;
+      --cherry-dim: #C53030;
+      --owl-gold:   #D4A843;
+      --white:      #FFFFFF;
+      --off-white:  #F7F8FA;
+      --muted:      #94A3B8;
+      --border:     #1E2D45;
+      --text-body:  #CBD5E1;
+      --text-head:  #F1F5F9;
+      --code-bg:    #0D1525;
+      --code-fg:    #93C5FD;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--text-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy-mid);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 48px 72px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cherry);
+      background: rgba(229,62,62,0.1);
+      border: 1px solid rgba(229,62,62,0.25);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 span { color: var(--cherry); }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 32px 96px;
+    }
+
+    /* ── SECTION ── */
+    section { margin-bottom: 80px; }
+
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cherry);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-head);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 span { color: var(--cherry); }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-head);
+      margin: 28px 0 8px;
+    }
+
+    p { color: var(--text-body); margin-bottom: 14px; }
+
+    /* ── LAYER STACK DIAGRAM ── */
+    .layer-stack { max-width: 560px; margin: 32px auto 16px; }
+
+    .layer-box {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .layer-box.l3 { border-color: rgba(96,165,250,0.4); }
+    .layer-box.l2 { border-color: rgba(52,211,153,0.35); }
+    .layer-box.l1 { border-color: rgba(212,168,67,0.5); }
+
+    .layer-box h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white);
+      margin: 0 0 3px;
+    }
+
+    .layer-box p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    .layer-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .layer-arrow {
+      text-align: center;
+      color: var(--owl-gold);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .layer-caption {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* ── FILE TREE ── */
+    .file-tree {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      line-height: 2;
+      margin: 24px 0;
+      overflow-x: auto;
+    }
+
+    .ft-folder { color: var(--owl-gold); font-weight: 500; }
+    .ft-file   { color: var(--code-fg); }
+    .ft-root   { color: var(--cherry); }
+    .ft-note   { color: #475569; font-style: italic; }
+    .ft-label  {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .file-tree + .file-tree { margin-top: -4px; }
+
+    /* ── FILE CARDS ── */
+    .file-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .file-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      transition: border-color 0.2s;
+    }
+
+    .file-card:hover { border-color: #2E4060; }
+
+    .file-card.root-card { border-color: rgba(212,168,67,0.35); }
+
+    .fc-name {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cherry);
+      margin-bottom: 6px;
+    }
+
+    .fc-audience {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--owl-gold);
+      margin-bottom: 8px;
+    }
+
+    .file-card p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ── STEPS ── */
+    .steps { list-style: none; counter-reset: step; margin: 28px 0; }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 24px;
+      margin-bottom: 36px;
+      align-items: start;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      background: var(--cherry);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .step-body h3 { margin-top: 10px; }
+
+    /* ── PROMPT BOX ── */
+    .prompt-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .prompt-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--owl-gold);
+      margin-bottom: 10px;
+    }
+
+    .prompt-box p {
+      font-size: 14px;
+      color: #94A3B8;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .prompt-box em {
+      color: var(--code-fg);
+      font-style: normal;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--code-fg);
+      background: rgba(147,197,253,0.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    /* ── TIP ── */
+    .tip {
+      background: rgba(229,62,62,0.07);
+      border: 1px solid rgba(229,62,62,0.2);
+      border-left: 3px solid var(--cherry);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--text-body);
+    }
+
+    .tip strong { color: var(--text-head); }
+    .tip a { color: var(--cherry); }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    th {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-body);
+      vertical-align: top;
+    }
+
+    td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--cherry);
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .badge-root    { background: rgba(212,168,67,0.15); color: #E6C26B; }
+    .badge-package { background: rgba(96,165,250,0.15); color: #93C5FD; }
+    .badge-both    { background: rgba(52,211,153,0.15); color: #6EE7B7; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 36px 32px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    footer span { color: var(--owl-gold); }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 56px 24px 48px; }
+      .page { padding: 48px 20px 64px; }
+      .file-cards { grid-template-columns: 1fr; }
+      .steps li { grid-template-columns: 44px 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://openowls-at-temple.github.io/">🦉 OpenOwls</a>
+  <ul class="nav-links">
+    <li><a href="https://openowls-at-temple.github.io/#projects">Projects</a></li>
+    <li><a href="https://openowls-at-temple.github.io/#how">How It Works</a></li>
+    <li><a href="https://openowls-at-temple.github.io/#join">Join</a></li>
+    <li><a href="https://github.com/OpenOwls-at-Temple">GitHub</a></li>
+    <li><a href="https://openowls-at-temple.github.io/how-we-begin">How We Begin</a></li>
+    <li><a href="mailto:openowls@temple.edu">Email Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">OpenOwls · SDD Suite Edition</div>
+  <h1>Spec-Driven Development for a<br><span>Multi-Package Monorepo</span></h1>
+  <p>The advanced, two-tier version of OpenOwls SDD — for a suite of stacked libraries that live and build together in one repository.</p>
+</div>
+
+<div class="page">
+
+  <!-- SECTION 1 -->
+  <section>
+    <div class="section-tag">Section 01</div>
+    <h2>What You're <span>Building</span></h2>
+    <p>The original <a href="getting-started-single-app.html" style="color:var(--cherry);">OpenOwls SDD guide</a> assumes one stand-alone application. This Suite Edition is for the next step up: a <strong>suite of libraries</strong>, not a single app.</p>
+    <p>Several Python packages are <strong>stacked on top of one another</strong> — each depends on the one below. Every package keeps <strong>its own <code>.venv</code> and its own <code>requirements.txt</code></strong>, yet they all work together and live in <strong>one monorepo</strong>. Dependencies point <strong>downward only</strong>.</p>
+
+    <div class="layer-stack">
+      <div class="layer-box l3">
+        <div>
+          <h4>app</h4>
+          <p>User- and model-facing. Talks to people and the LLM. Assembled on top of everything below.</p>
+        </div>
+        <div class="layer-tag">Layer 3 · Top</div>
+      </div>
+      <div class="layer-arrow">↓ depends on</div>
+      <div class="layer-box l2">
+        <div>
+          <h4>middleware</h4>
+          <p>Orchestration layer. Built on <code>core</code>; consumes it only through its public API.</p>
+        </div>
+        <div class="layer-tag">Layer 2 · Middle</div>
+      </div>
+      <div class="layer-arrow">↓ depends on</div>
+      <div class="layer-box l1">
+        <div>
+          <h4>core</h4>
+          <p>The foundation. Depends on nothing internal. Built and stabilized first.</p>
+        </div>
+        <div class="layer-tag">Layer 1 · Base</div>
+      </div>
+    </div>
+    <p class="layer-caption">Illustrative layers — rename <code>core / middleware / app</code> to your real packages and confirm the dependency order.</p>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section>
+    <div class="section-tag">Section 02</div>
+    <h2>The <span>Two-Tier</span> Spec Structure</h2>
+    <p>The key idea: specs live at <strong>two levels</strong>. A <strong>shared layer at the root</strong> that every package inherits, and a <strong>private layer inside each package</strong>. Operational files — <code>CLAUDE.md</code> and the progress files — sit <strong>loose at each directory root</strong>; everything that is a spec goes <strong>inside an <code>ai_specs/</code> folder</strong>.</p>
+
+    <div class="file-tree">
+      <span class="ft-label">Tier 1 — Shared, system-wide (the root)</span>
+      <div><span class="ft-folder">your-suite/</span></div>
+      <div>├── <span class="ft-root">CLAUDE.md</span>             <span class="ft-note">← system entry point — read first (loose)</span></div>
+      <div>├── <span class="ft-root">project_progress.md</span>   <span class="ft-note">← stack-wide rollup + index to each package's progress (loose)</span></div>
+      <div>└── <span class="ft-folder">ai_specs/</span>                 <span class="ft-note">← SHARED, system-wide specs</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">overview.md</span>              <span class="ft-note">← the whole stack's purpose</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">domain-knowledge.md</span>      <span class="ft-note">← shared terminology &amp; business rules</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">conventions.md</span>           <span class="ft-note">← one shared style / git / testing standard</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">llm-integration.md</span>       <span class="ft-note">← shared model choice &amp; guardrails</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="ft-file">auth-security.md</span>         <span class="ft-note">← shared identity model &amp; security posture</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="ft-file">architecture-planning.md</span> <span class="ft-note">← THE layering: package order &amp; dependency direction</span></div>
+    </div>
+
+    <div class="file-tree">
+      <span class="ft-label">Tier 2 — Private, per package (same shape for every package)</span>
+      <div><span class="ft-folder">packages/core/</span></div>
+      <div>├── <span class="ft-root">CLAUDE.md</span>         <span class="ft-note">← package entry: "read ./ai_specs/, inherit root" (loose)</span></div>
+      <div>├── <span class="ft-root">progress.md</span>       <span class="ft-note">← this library's session memory (loose)</span></div>
+      <div>├── <span class="ft-folder">ai_specs/</span></div>
+      <div>│&nbsp;&nbsp;&nbsp;├── <span class="ft-file">overview.md</span>      <span class="ft-note">← what THIS library does, its API, who consumes it</span></div>
+      <div>│&nbsp;&nbsp;&nbsp;├── <span class="ft-file">features.md</span>      <span class="ft-note">← this library's capabilities, phased</span></div>
+      <div>│&nbsp;&nbsp;&nbsp;├── <span class="ft-file">architecture.md</span>  <span class="ft-note">← this library's internal design</span></div>
+      <div>│&nbsp;&nbsp;&nbsp;└── <span class="ft-file">deployment.md</span>    <span class="ft-note">← how this library is packaged &amp; versioned</span></div>
+      <div>├── <span class="ft-folder">.venv/</span></div>
+      <div>└── <span class="ft-file">requirements.txt</span></div>
+    </div>
+
+    <div class="tip"><strong>Structural invariant:</strong> <code>CLAUDE.md</code> and the progress files are <strong>operational</strong> and must sit at the folder root — <strong>never inside <code>ai_specs/</code></strong>. Claude Code discovers <code>CLAUDE.md</code> by walking up the directory tree, so it has to live where you work and <em>point into</em> <code>ai_specs/</code>.</div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section>
+    <div class="section-tag">Section 03</div>
+    <h2>What Goes <span>Where</span> — and Why</h2>
+    <p>Each spec is placed at the level where it is naturally owned. Shared policy lives once at the root; package-specific detail lives with the package. This is the decision log.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Spec</th>
+          <th>Level</th>
+          <th>Decision &amp; Rationale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>conventions.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>One standard for all packages; copying it per-package guarantees drift the moment a rule changes.</td>
+        </tr>
+        <tr>
+          <td>domain-knowledge.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>Shared vocabulary and business rules for the whole team.</td>
+        </tr>
+        <tr>
+          <td>architecture-planning.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>The layering — which package depends on which, in which direction — is inherently <em>between</em> packages and can't live in any one of them.</td>
+        </tr>
+        <tr>
+          <td>llm-integration.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>Shared <strong>policy</strong> (model choice + guardrails). Caveat: if only the top <code>app</code> package calls the model, move prompt specifics into that package.</td>
+        </tr>
+        <tr>
+          <td>auth-security.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>Shared <strong>policy</strong> (identity model + posture). Caveat: implementation specifics can move to the package that owns the boundary.</td>
+        </tr>
+        <tr>
+          <td>overview.md</td>
+          <td><span class="badge badge-both">Both</span></td>
+          <td>Root = the whole stack's purpose. Package = what <em>this</em> library does, its API, its consumers. Same name, different scope — complementary, not duplicated.</td>
+        </tr>
+        <tr>
+          <td>features.md</td>
+          <td><span class="badge badge-package">Package</span></td>
+          <td>Each library has its own phased capabilities.</td>
+        </tr>
+        <tr>
+          <td>architecture.md</td>
+          <td><span class="badge badge-package">Package</span></td>
+          <td>The <em>within</em>-package design. Distinct from the root's <em>between</em>-package layering.</td>
+        </tr>
+        <tr>
+          <td>deployment.md</td>
+          <td><span class="badge badge-package">Package</span></td>
+          <td>How that specific library is packaged and versioned.</td>
+        </tr>
+        <tr>
+          <td>progress.md</td>
+          <td><span class="badge badge-package">Package</span></td>
+          <td>Per-library session memory.</td>
+        </tr>
+        <tr>
+          <td>project_progress.md</td>
+          <td><span class="badge badge-root">Root</span></td>
+          <td>Stack-wide rollup; an index pointing to each package's <code>progress.md</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section>
+    <div class="section-tag">Section 04</div>
+    <h2>How Claude Code <span>Reads</span> the Monorepo</h2>
+    <p>The two-tier structure isn't arbitrary — it mirrors exactly how Claude Code discovers and loads context. Understanding these mechanics is what makes the design click.</p>
+
+    <h3>Root specs load by walking up</h3>
+    <p>From wherever Claude Code launches, it walks up to the repo root and reads every <code>CLAUDE.md</code> it finds. So the root <code>CLAUDE.md</code> and the shared specs it points at are <strong>always in context, in every package</strong>. This is precisely why shared standards belong at the root — they're inherited for free.</p>
+
+    <h3>Package specs load on demand</h3>
+    <p>A nested <code>CLAUDE.md</code> is <strong>not</strong> loaded at launch. It's pulled in the first time Claude Code reads a file in that subtree. This is the focus mechanism — a package's detail arrives only when you're actually working in it.</p>
+
+    <h3>Launch inside a package for focus</h3>
+    <p>Running <code>cd packages/core &amp;&amp; claude</code> means Claude Code still inherits the root rules (walk-up), but its attention and on-demand loading center on that one library.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Example focused session opener</div>
+      <p>"Read <code>./ai_specs/</code> and <code>./progress.md</code> for this package, and follow the root <code>CLAUDE.md</code> conventions. We are in <em>Phase 1</em> of <code>core</code>. The next task is <em>[task from progress.md]</em>. Let's begin."</p>
+    </div>
+
+    <h3>Keep instruction files concise</h3>
+    <p>Instruction files over ~200 lines consume more context and can reduce how reliably they're followed. Keep each <code>CLAUDE.md</code> short and let it <em>reference</em> the <code>ai_specs/</code> files rather than restate them.</p>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section>
+    <div class="section-tag">Section 05</div>
+    <h2>Per-Package <span>Environment</span> Rules</h2>
+    <p>Each package owns its own environment, and each package's <code>CLAUDE.md</code> is the home for its environment instructions. Because that file loads on demand, the right rules arrive exactly when Claude Code starts working in that library.</p>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Example rule in a package's CLAUDE.md</div>
+      <p>"Before running, testing, or installing anything in this package: activate <code>./.venv</code>. Install dependencies only from <code>./requirements.txt</code> into that venv. <em>Never activate or modify a sibling package's environment.</em>"</p>
+    </div>
+
+    <div class="tip"><strong>One venv per package, never cross-activated.</strong> A leaked or shared environment is one of the easiest ways to make a "works on my machine" bug that only appears once another layer is built on top.</div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section>
+    <div class="section-tag">Section 06</div>
+    <h2>Build Order — <span>Bottom-Up</span></h2>
+    <p>In a stacked suite, dependency order <strong>is</strong> a phasing discipline. You build from the foundation up, and you don't climb the stack until the layer below is solid.</p>
+
+    <ol class="steps">
+      <li>
+        <div class="step-body">
+          <h3>core first</h3>
+          <p>Build and stabilize the base. Its own tests pass and its public API is settled <em>before</em> anything depends on it. A churning foundation forces rework in every layer above.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <h3>middleware next</h3>
+          <p>Only once <code>core</code> is stable. Consume <code>core</code> through its public API — never reach around it into internals.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-body">
+          <h3>app last</h3>
+          <p>The user- and model-facing layer, assembled on a foundation that already works end-to-end.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="tip"><strong>Within each library,</strong> a real Phase 1 is the smallest version that works end-to-end; everything else is Phase 2. The most common mistake is starting <code>app</code> because it's exciting while <code>core</code> is still churning.</div>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section>
+    <div class="section-tag">Section 07</div>
+    <h2>Golden Rules <span>for the Suite</span></h2>
+
+    <h3>Shared specs live once, at the root</h3>
+    <p>Never copy a root spec into a package. A single source of truth is the whole point of the two-tier structure.</p>
+
+    <h3>One venv per package, never cross-activated</h3>
+    <p>Activate only the current package's <code>./.venv</code>, and install only from its <code>./requirements.txt</code>. Leave sibling environments alone.</p>
+
+    <h3>Log work in two places</h3>
+    <p>Update the package's <code>progress.md</code> <strong>and</strong> keep the root <code>project_progress.md</code> current. The rollup is how anyone sees the whole stack's state at a glance.</p>
+
+    <h3>Stay in your layer</h3>
+    <p>Respect the downward-only dependency direction. A higher layer may use a lower one through its public API; a lower layer must never depend on a higher one.</p>
+
+    <h3>Specs are the source of truth</h3>
+    <p>If Claude Code does something unexpected, fix the relevant spec first — root or package — then re-run the task. Ambiguity in docs becomes wrong assumptions in code.</p>
+
+    <h3>Never commit secrets</h3>
+    <p>Use <code>.env</code> + <code>.gitignore</code>. For a stack that shares one LLM provider key, a single root <code>.env</code> is usually simpler than one per package.</p>
+  </section>
+
+  <!-- CROSS-REFERENCE -->
+  <section>
+    <div class="section-tag">Related</div>
+    <h2>Building a <span>Single App?</span></h2>
+    <p>If your project is one stand-alone application rather than a stacked suite of libraries, start with the original framework instead — it uses a single <code>ai_specs/</code> folder and a simpler one-team workflow.</p>
+    <div class="tip">→ <a href="getting-started-single-app.html"><strong>OpenOwls SDD — Getting Started Guide (Single App)</strong></a></div>
+  </section>
+
+</div>
+
+<footer>
+  <span>🦉 OpenOwls</span> · Temple University · Department of Computer &amp; Information Sciences<br />
+  <a href="mailto:openowls@temple.edu">openowls@temple.edu</a> ·
+  <a href="https://github.com/OpenOwls-at-Temple">GitHub</a><br /><br />
+  © 2026 OpenOwls at Temple University
+</footer>
+
+</body>
+</html>

@@ -18,9 +18,10 @@ Most student projects have one role: "developer." OpenOwls SDD introduces a diff
 | `features.md` | Product owner translating user needs into requirements |
 | `architecture-planning.md` | System architect designing the technical approach |
 | `domain-knowledge.md` | Domain expert briefing the engineering team |
-| `conventions.md` | Engineering lead setting team standards |
-| `deployment.md` | DevOps engineer owning the release pipeline |
 | `llm-integration.md` | AI/ML engineer designing the intelligence layer |
+| `conventions.md` | Engineering lead setting team standards |
+| `auth-security.md` | Security engineer protecting users and data |
+| `deployment.md` | DevOps engineer owning the release pipeline |
 | `progress.md` | Engineering team's daily standup and sprint tracker |
 
 Every OpenOwls project includes an LLM layer — `llm-integration.md` is a first-class file, not optional.
@@ -40,12 +41,15 @@ your-project/
     ├── features.md                  ← what the app does, in plain language
     ├── architecture-planning.md     ← how it's built
     ├── domain-knowledge.md          ← concepts and constraints the team needs to understand
+    ├── llm-integration.md           ← how AI fits into the product
     ├── conventions.md               ← coding standards and workflow rules
-    ├── deployment.md                ← how to ship it
-    └── llm-integration.md           ← how AI fits into the product
+    ├── auth-security.md             ← users, identity, auth, data protection, threats
+    └── deployment.md                ← how to ship it
 ```
 
 The folder is always called `ai_specs/` — this is the OpenOwls convention.
+
+> _**Advanced (optional):** a larger project built as a suite of stacked libraries in one monorepo can use the Suite Edition (`templates/multi-package/`). Most teams won't need it — start here._
 
 ---
 
@@ -69,9 +73,11 @@ Open the project in [Claude Code](https://claude.ai/code). `CLAUDE.md` tells Cla
 
 ## Getting Started
 
-Copy the `templates/` folder into your project root and start filling in the spec files.
+Copy **`templates/single-app/`** into your project root and start filling in the spec files.
 
-Full walkthrough: [Getting Started Guide](docs/getting-started.html)
+Full walkthrough: [Getting Started Guide](docs/getting-started-single-app.html)
+
+> _Building a suite of stacked libraries in one monorepo instead of a single app? There's an advanced **Suite Edition** (`templates/multi-package/`) — see its [guide](docs/getting-started-multi-package.html)._
 
 ---
 
@@ -79,12 +85,22 @@ Full walkthrough: [Getting Started Guide](docs/getting-started.html)
 
 ```
 openowls-sdd/
-├── templates/          ← copy these into your project
+├── templates/
+│   ├── single-app/           ← copy this into your project
+│   │   ├── CLAUDE.md
+│   │   ├── progress.md
+│   │   └── ai_specs/         ← overview, features, architecture-planning,
+│   │                            domain-knowledge, llm-integration,
+│   │                            conventions, auth-security, deployment
+│   └── multi-package/        ← advanced Suite Edition (optional — see below)
 ├── examples/
-│   └── todo-app/       ← worked example (coming soon)
+│   └── todo-app/             ← worked example (coming soon)
 └── docs/
-    └── getting-started.html
+    ├── getting-started-single-app.html
+    └── getting-started-multi-package.html
 ```
+
+> _The **`multi-package/`** template is an advanced option for a suite of stacked libraries in one monorepo. Most projects should start with **`single-app/`**._
 
 ---
 
