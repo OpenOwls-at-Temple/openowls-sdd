@@ -1,4 +1,4 @@
-# Architecture — Package: example-package
+# Architecture — Package: package1
 > **OpenOwls SDD — Suite Edition.** Private to **this package**. Read by engineers working inside this library.
 > Defines this library's **internal** design — its modules, key types, and data flow.
 > This is the *within*-package design. The *between*-package layering lives in the root `ai_specs/architecture-planning.md`.
@@ -16,9 +16,9 @@ _e.g. A small set of modules: a data model, a store that persists it, and a publ
 <!-- The source layout INSIDE this package. -->
 
 ```
-example-package/
+package1/
 ├── src/
-│   └── example_package/
+│   └── package1/
 │       ├── __init__.py        # Public API surface (what higher layers import)
 │       ├── models.py          # Internal data models
 │       ├── service.py         # Core logic

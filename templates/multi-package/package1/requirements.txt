@@ -1,0 +1,9 @@
+# requirements.txt — Package: package1
+# This package's OWN dependencies, installed into this package's OWN ./.venv.
+# Never install these into a sibling package's environment.
+#
+# Pin versions for reproducibility, e.g.:
+#   anthropic==0.39.0
+#   pydantic==2.9.0
+#
+# (no dependencies yet)

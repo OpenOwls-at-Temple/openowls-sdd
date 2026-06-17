@@ -65,19 +65,17 @@ your-suite/
 │   ├── llm-integration.md
 │   ├── auth-security.md
 │   └── architecture-planning.md
-└── packages/
-    ├── core/                 # one package — repeat this shape per package
-    │   ├── CLAUDE.md         # package entry (loose)
-    │   ├── progress.md       # package session memory (loose)
-    │   ├── ai_specs/         # PRIVATE, per-package specs
-    │   │   ├── overview.md
-    │   │   ├── features.md
-    │   │   ├── architecture.md
-    │   │   └── deployment.md
-    │   ├── .venv/            # package-owned environment (git-ignored)
-    │   └── requirements.txt
-    ├── middleware/
-    └── app/
+├── package1/                 # one package — repeat this shape per package (rename to your real package)
+│   ├── CLAUDE.md             # package entry (loose)
+│   ├── progress.md           # package session memory (loose)
+│   ├── ai_specs/             # PRIVATE, per-package specs
+│   │   ├── overview.md
+│   │   ├── features.md
+│   │   ├── architecture.md
+│   │   └── deployment.md
+│   ├── .venv/                # package-owned environment (git-ignored)
+│   └── requirements.txt
+└── package2/                 # another package, same shape (add one folder per package)
 ```
 
 ---
