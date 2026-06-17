@@ -16,16 +16,15 @@ _Project just initialized. No package has started implementation._
 
 | Order | Package | Layer | Status | Active Phase | Progress |
 |-------|---------|-------|--------|--------------|----------|
-| 1 | _e.g. core_ | Base | Not started | — | [progress](packages/core/progress.md) |
-| 2 | _e.g. middleware_ | Middle | Blocked on `core` | — | [progress](packages/middleware/progress.md) |
-| 3 | _e.g. app_ | Top | Not started | — | [progress](packages/app/progress.md) |
+| 1 | _e.g. package1_ | Base | Not started | — | [progress](package1/progress.md) |
+| 2 | _e.g. package2_ | Top | Blocked on `package1` | — | [progress](package2/progress.md) |
 
 ---
 
 ## Current Focus
 <!-- Which package + phase is the team actively building right now? -->
 
-- _e.g. Building Phase 1 of `core`._
+- _e.g. Building Phase 1 of `package1`._
 
 ---
 

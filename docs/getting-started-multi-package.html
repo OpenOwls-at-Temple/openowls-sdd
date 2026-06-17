@@ -511,8 +511,8 @@
     </div>
 
     <div class="file-tree">
-      <span class="ft-label">Tier 2 — Private, per package (same shape for every package)</span>
-      <div><span class="ft-folder">packages/core/</span></div>
+      <span class="ft-label">Tier 2 — Private, per package (a top-level folder under your-suite/, same shape for every package)</span>
+      <div><span class="ft-folder">core/</span></div>
       <div>├── <span class="ft-root">CLAUDE.md</span>         <span class="ft-note">← package entry: "read ./ai_specs/, inherit root" (loose)</span></div>
       <div>├── <span class="ft-root">progress.md</span>       <span class="ft-note">← this library's session memory (loose)</span></div>
       <div>├── <span class="ft-folder">ai_specs/</span></div>
@@ -614,7 +614,7 @@
     <p>A nested <code>CLAUDE.md</code> is <strong>not</strong> loaded at launch. It's pulled in the first time Claude Code reads a file in that subtree. This is the focus mechanism — a package's detail arrives only when you're actually working in it.</p>
 
     <h3>Launch inside a package for focus</h3>
-    <p>Running <code>cd packages/core &amp;&amp; claude</code> means Claude Code still inherits the root rules (walk-up), but its attention and on-demand loading center on that one library.</p>
+    <p>Running <code>cd core &amp;&amp; claude</code> means Claude Code still inherits the root rules (walk-up), but its attention and on-demand loading center on that one library.</p>
 
     <div class="prompt-box">
       <div class="prompt-label">Example focused session opener</div>

@@ -17,7 +17,7 @@ When you start working inside a specific package, also read that package's `CLAU
 ## How This Repo Is Structured (Two Tiers)
 
 - **Tier 1 — Root (this folder):** shared specs every package inherits. Operational files (`CLAUDE.md`, `project_progress.md`) sit **loose** at the root; specs live inside `ai_specs/`.
-- **Tier 2 — Each package (`packages/<name>/`):** its own `CLAUDE.md`, `progress.md`, `ai_specs/`, `.venv/`, and `requirements.txt`.
+- **Tier 2 — Each package (`<name>/` at the suite root):** its own `CLAUDE.md`, `progress.md`, `ai_specs/`, `.venv/`, and `requirements.txt`. Each package is a top-level folder; there is no wrapping `packages/` directory.
 
 `CLAUDE.md` and the progress files are **operational** — they must sit at a folder root and *point into* `ai_specs/`. Never put them inside `ai_specs/`.
 

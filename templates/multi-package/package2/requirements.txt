@@ -1,4 +1,4 @@
-# requirements.txt — Package: example-package
+# requirements.txt — Package: package2
 # This package's OWN dependencies, installed into this package's OWN ./.venv.
 # Never install these into a sibling package's environment.
 #

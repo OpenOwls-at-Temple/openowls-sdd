@@ -1,4 +1,4 @@
-# Progress — Package: example-package
+# Progress — Package: package2
 
 > **OpenOwls SDD — Suite Edition.** Session memory for **this package only**.
 > Update this at the end of every session **and** reflect the change in the root `project_progress.md` rollup.

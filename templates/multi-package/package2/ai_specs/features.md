@@ -1,4 +1,4 @@
-# Features — Package: example-package
+# Features — Package: package2
 > **OpenOwls SDD — Suite Edition.** Private to **this package**. Read by whoever defines and consumes this library.
 > Defines what *this library* does, phased. Phase 1 is the smallest version that works end-to-end for this package.
 

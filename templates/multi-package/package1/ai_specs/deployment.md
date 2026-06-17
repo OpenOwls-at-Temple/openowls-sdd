@@ -1,4 +1,4 @@
-# Deployment — Package: example-package
+# Deployment — Package: package1
 > **OpenOwls SDD — Suite Edition.** Private to **this package**. Read by engineers packaging this library.
 > Defines how *this library* is built, versioned, and consumed by higher layers.
 > Suite-wide deployment and shared environment variables live in the root specs; this file is package-specific.
@@ -11,7 +11,7 @@
 | Setting | Value |
 |---------|-------|
 | Build tool | _e.g. setuptools / hatch / poetry_ |
-| Import name | _e.g. `example_package`_ |
+| Import name | _e.g. `package1`_ |
 | Distribution | _e.g. Installed editable into higher packages' venvs during development_ |
 
 ---
@@ -35,7 +35,7 @@
 - Setup:
 
 ```bash
-cd packages/example-package
+cd package1
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 <!-- The integration contract for packages above this one. -->
 
 - Higher layers import only this package's **public API** (see `architecture.md`).
-- _e.g. Add `example-package` to the higher package's `requirements.txt` (editable/local path during development)._
+- _e.g. Add `package1` to the higher package's `requirements.txt` (editable/local path during development)._
 
 ---
 

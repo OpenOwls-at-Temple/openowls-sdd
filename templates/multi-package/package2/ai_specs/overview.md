@@ -1,4 +1,4 @@
-# Overview — Package: example-package
+# Overview — Package: package2
 > **OpenOwls SDD — Suite Edition.** Private to **this package**. Read by anyone consuming or building this library.
 > Describes what *this one library* does, its public API, and who depends on it.
 > For the whole-stack purpose, see the root `ai_specs/overview.md`; for the layering, see the root `ai_specs/architecture-planning.md`.
@@ -6,9 +6,9 @@
 ---
 
 ## Package Name
-<!-- The real package name (rename from example-package). -->
+<!-- The real package name (rename from package2). -->
 
-_example-package_
+_package2_
 
 ## One-Line Description
 <!-- What does this library do, in a single sentence? -->

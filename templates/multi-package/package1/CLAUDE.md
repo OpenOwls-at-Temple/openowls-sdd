@@ -1,6 +1,6 @@
-# CLAUDE.md — Package: example-package
+# CLAUDE.md — Package: package1
 > **OpenOwls SDD — Suite Edition.** This is **one package** inside the suite.
-> Rename `example-package` to your real package name and copy this whole folder shape for every package.
+> Rename `package1` to your real package name and copy this whole folder shape for every package.
 > This file loads **on demand** — the first time Claude Code reads a file in this package — and it *inherits* the
 > root `CLAUDE.md` and all shared `ai_specs/` automatically (Claude Code walks up the directory tree).
 

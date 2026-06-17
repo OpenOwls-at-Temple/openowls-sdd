@@ -44,7 +44,7 @@
 ## Where Prompts Live
 <!-- Pointer, not the prompts themselves. -->
 
-- Prompt templates and the per-feature context strategy live in the owning package's `ai_specs/` (e.g. `packages/app/ai_specs/architecture.md` or a dedicated prompts section).
+- Prompt templates and the per-feature context strategy live in the owning package's `ai_specs/` (e.g. the top package's `ai_specs/architecture.md` or a dedicated prompts section).
 - Keep all prompts for a package in one place within that package — never scattered inline.
 
 ---
