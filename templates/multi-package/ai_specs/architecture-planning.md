@@ -58,13 +58,15 @@ core         (Layer 1 · Base)
 your-suite/
 ├── CLAUDE.md                 # system entry point (loose)
 ├── project_progress.md       # stack-wide rollup (loose)
+├── batchrun.md               # suite-wide batch/scheduled job status (loose)
 ├── ai_specs/                 # SHARED, system-wide specs
 │   ├── overview.md
 │   ├── domain-knowledge.md
 │   ├── conventions.md
 │   ├── llm-integration.md
 │   ├── auth-security.md
-│   └── architecture-planning.md
+│   ├── architecture-planning.md
+│   └── design.md
 ├── package1/                 # one package — repeat this shape per package (rename to your real package)
 │   ├── CLAUDE.md             # package entry (loose)
 │   ├── progress.md           # package session memory (loose)
