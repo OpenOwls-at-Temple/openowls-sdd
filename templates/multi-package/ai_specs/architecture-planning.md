@@ -77,7 +77,8 @@ your-suite/
 │   │   └── deployment.md
 │   ├── .venv/                # package-owned environment (git-ignored)
 │   └── requirements.txt
-└── package2/                 # another package, same shape (add one folder per package)
+├── package2/                 # another package, same shape
+└── package3/                 # a third package, same shape (add one folder per package)
 ```
 
 ---
