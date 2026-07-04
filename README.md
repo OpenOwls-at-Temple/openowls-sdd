@@ -17,12 +17,14 @@ Most student projects have one role: "developer." OpenOwls SDD introduces a diff
 | `overview.md` | Business sponsor defining the product vision |
 | `features.md` | Product owner translating user needs into requirements |
 | `architecture-planning.md` | System architect designing the technical approach |
+| `design.md` | System architect setting design principles and specifications |
 | `domain-knowledge.md` | Domain expert briefing the engineering team |
 | `llm-integration.md` | AI/ML engineer designing the intelligence layer |
 | `conventions.md` | Engineering lead setting team standards |
 | `auth-security.md` | Security engineer protecting users and data |
 | `deployment.md` | DevOps engineer owning the release pipeline |
 | `progress.md` | Engineering team's daily standup and sprint tracker |
+| `batchrun.md` | Operations engineer tracking scheduled / batch jobs |
 
 Every OpenOwls project includes an LLM layer — `llm-integration.md` is a first-class file, not optional.
 
@@ -36,10 +38,12 @@ Every OpenOwls SDD project follows this layout:
 your-project/
 ├── CLAUDE.md                        ← tells Claude Code to read everything below in order
 ├── progress.md                      ← living session status, updated after every work session
+├── batchrun.md                      ← living record of scheduled/batch jobs and their latest runs
 └── ai_specs/
     ├── overview.md                  ← what the project is and why it exists
     ├── features.md                  ← what the app does, in plain language
     ├── architecture-planning.md     ← how it's built
+    ├── design.md                    ← design principles, directives, and non-functional requirements
     ├── domain-knowledge.md          ← concepts and constraints the team needs to understand
     ├── llm-integration.md           ← how AI fits into the product
     ├── conventions.md               ← coding standards and workflow rules
@@ -89,7 +93,8 @@ openowls-sdd/
 │   ├── single-app/           ← copy this into your project
 │   │   ├── CLAUDE.md
 │   │   ├── progress.md
-│   │   └── ai_specs/         ← overview, features, architecture-planning,
+│   │   ├── batchrun.md
+│   │   └── ai_specs/         ← overview, features, architecture-planning, design,
 │   │                            domain-knowledge, llm-integration,
 │   │                            conventions, auth-security, deployment
 │   └── multi-package/        ← advanced Suite Edition (optional — see below)

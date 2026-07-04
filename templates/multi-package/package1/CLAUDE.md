@@ -12,7 +12,7 @@
 4. **`./ai_specs/architecture.md`** — this library's internal design
 5. **`./ai_specs/deployment.md`** — how this library is packaged and versioned
 
-You also inherit, from the suite root: `overview.md`, `architecture-planning.md` (the layering), `domain-knowledge.md`, `llm-integration.md`, `conventions.md`, and `auth-security.md`. Follow them without restating them here.
+You also inherit, from the suite root: `overview.md`, `architecture-planning.md` (the layering), `design.md`, `domain-knowledge.md`, `llm-integration.md`, `conventions.md`, and `auth-security.md`, plus the operational `batchrun.md`. Follow them without restating them here.
 
 ## Environment Rules (This Package Only)
 
