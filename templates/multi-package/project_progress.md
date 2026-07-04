@@ -17,7 +17,8 @@ _Project just initialized. No package has started implementation._
 | Order | Package | Layer | Status | Active Phase | Progress |
 |-------|---------|-------|--------|--------------|----------|
 | 1 | _e.g. package1_ | Base | Not started | — | [progress](package1/progress.md) |
-| 2 | _e.g. package2_ | Top | Blocked on `package1` | — | [progress](package2/progress.md) |
+| 2 | _e.g. package2_ | Middle | Blocked on `package1` | — | [progress](package2/progress.md) |
+| 3 | _e.g. package3_ | Top | Blocked on `package2` | — | [progress](package3/progress.md) |
 
 ---
 
