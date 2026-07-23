@@ -1,0 +1,24 @@
+# SD-KDP pipeline dependencies — uncomment/pin as you implement each stage.
+
+# PDF + text extraction
+# pypdf
+# pdfplumber
+# ocrmypdf            # OCR for scanned PDFs
+
+# URL fetching + readable-text extraction
+# requests
+# trafilatura         # readable article extraction
+# playwright          # headless browser for JS-heavy pages
+
+# LLM + embeddings (pick your provider)
+# anthropic
+# openai
+
+# Vector store (pick one)
+# lancedb
+# chromadb
+# faiss-cpu
+
+# Utilities
+# pyyaml              # parse output_format.md front-matter
+# python-dotenv       # load secrets from .env

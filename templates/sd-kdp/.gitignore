@@ -1,0 +1,34 @@
+# ─────────────────────────────────────────────────────────────
+# SD-KDP · dynamic data — regenerated/collected, differs every day.
+# The FOLDERS are tracked (via .gitkeep) but their CONTENTS are not.
+# These are backed up by the batch process (see ai_specs/batch_process.md),
+# not by git.
+# ─────────────────────────────────────────────────────────────
+
+# Collected raw documents (the knowledge database)
+kdb/*
+!kdb/.gitkeep
+
+# Distilled output (wiki / FAQ)
+wiki/*
+!wiki/.gitkeep
+
+# Local backups (handled by src/backup.py; live outside git)
+backups/
+
+# Retrieval index / pipeline state
+.index/
+.state/
+
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+env/
+venv/
+
+# OS cruft
+.DS_Store
