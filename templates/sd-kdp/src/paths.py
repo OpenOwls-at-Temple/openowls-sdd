@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 AI_SPECS = ROOT / "ai_specs"
+PROGRESS = ROOT / "progress.md"  # living status + run log
 KDB = ROOT / "kdb"          # collected raw documents (gitignored contents)
 WIKI = ROOT / "wiki"        # distilled output (gitignored contents)
 INDEX = ROOT / ".index"     # retrieval index

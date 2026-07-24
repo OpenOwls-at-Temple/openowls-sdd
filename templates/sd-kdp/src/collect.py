@@ -63,8 +63,8 @@ def collect() -> dict:
                 stats["skipped"] += 1
                 continue
             # TODO: write text to kdb/fetched/<slug>.md with a provenance header
+            stats["changed" if url in manifest else "new"] += 1
             manifest[url] = {"hash": digest}
-            stats["new" if url not in manifest else "changed"] += 1
         except Exception:  # noqa: BLE001 — one bad source must not abort the run
             stats["failed"] += 1
 
