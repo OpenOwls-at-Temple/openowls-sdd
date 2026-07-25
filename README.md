@@ -85,6 +85,20 @@ Full walkthrough: [Getting Started Guide](docs/getting-started-single-app.html)
 
 ---
 
+## Beyond Software — Building a Knowledge Base
+
+The same spec-driven approach works when the deliverable isn't an app but a **knowledge base**: declare an **Oracle** — a trusted perspective and its canon — write a few small specs, and let AI collect the sources, distill them overnight, and answer questions in the Oracle's voice. Three templates, from simplest to the complete set:
+
+| Template | Specs | Use it for |
+|------|------|------|
+| `templates/sd-kdp-lite/` | 4 merged | learn the method in an afternoon; small static-corpus projects |
+| `templates/sd-kdp/` | 8 | the reference version — one spec file per concern, one maintainer |
+| `templates/sit-kb-awp/` | 10 + agent roster | the full **Self-Improving Target-oriented Knowledge-Based Agent Workflow Process**: event-driven sources, dated assessments, outcome-scored judgments, a critic agent that proposes spec improvements |
+
+Start with the smallest that fits, and graduate when a spec gains a second owner or a second clock. Each template's README explains the version family; `templates/sit-kb-awp/index.md` is the full guide.
+
+---
+
 ## This Repo
 
 ```
@@ -97,7 +111,10 @@ openowls-sdd/
 │   │   └── ai_specs/         ← overview, features, architecture-planning, design,
 │   │                            domain-knowledge, llm-integration,
 │   │                            conventions, auth-security, deployment
-│   └── multi-package/        ← advanced Suite Edition (optional — see below)
+│   ├── multi-package/        ← advanced Suite Edition (optional — see below)
+│   ├── sd-kdp-lite/          ← knowledge base, lite (4 merged specs)
+│   ├── sd-kdp/               ← knowledge base, reference version (8 specs)
+│   └── sit-kb-awp/           ← knowledge base, full agent workflow (10 specs)
 ├── examples/
 │   └── todo-app/             ← worked example (coming soon)
 └── docs/

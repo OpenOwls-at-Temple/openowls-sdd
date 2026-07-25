@@ -12,7 +12,8 @@ doing any work, read the spec files below **in this order**, then read
 5. `ai_specs/distillation_techniques.md` — how raw sources are distilled
 6. `ai_specs/output_format.md` — the exact shape of distilled output written to `wiki/`
 7. `ai_specs/batch_process.md` — the scheduled/batch jobs and backup
-8. `progress.md` — living status: what's done, in progress, blocked
+8. `ai_specs/progress_measure.md` — the target, per-run checks, and feedback verdicts
+9. `progress.md` — living status: what's done, in progress, blocked
 
 ## What this project does
 Collects source documents from an Oracle's canon into `kdb/`, distills them
@@ -32,3 +33,13 @@ generic averaged consensus.
 - Do not commit anything under `kdb/` or `wiki/`, and never commit secrets — use `.env`.
 - Update `progress.md` at the end of every work session; the next session starts from it.
 - Preserve the Oracle's declared bias — do not neutralize distilled answers into generic consensus.
+- After each run, apply the checks in `ai_specs/progress_measure.md`; record
+  feedback verdicts and route fixes to the spec named for each verdict type.
+
+## The SD-KDP family
+This is the **original SD-KDP** (eight specs). Two siblings exist:
+- **SD-KDP Lite** (`sd-kdp-lite/` — four merged specs): the quick-start version.
+- **SIT-KB-AWP** (`sit-kb-awp/` — ten specs + agent roster): the full
+  self-improving agent workflow — graduate there when a spec gains a second
+  human owner or a second clock (event-driven sources, dated append-only
+  outputs, delayed outcome scoring, a critic agent).

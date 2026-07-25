@@ -5,7 +5,7 @@
 A spec-first scaffold for building an AI-powered knowledge digestion project. You
 declare an **Oracle** — a perspective plus its trusted body of knowledge (a person
 like Warren Buffett, an institution like the Fed, or a site/knowledge base) — write
-seven small spec files, and the pipeline collects that Oracle's sources, distills
+eight small spec files, and the pipeline collects that Oracle's sources, distills
 them overnight, and serves questions in the Oracle's voice.
 
 The core idea: a generic LLM averages every viewpoint into bland consensus. SD-KDP
@@ -31,7 +31,8 @@ sd-kdp/
 │   ├── collection_techniques.md ← 4. where & how documents are downloaded
 │   ├── distillation_techniques.md ← 5. how knowledge is distilled
 │   ├── output_format.md         ← 6. format of distilled output (wiki / FAQ)
-│   └── batch_process.md         ← 7. batch/scheduled jobs + backup
+│   ├── batch_process.md         ← 7. batch/scheduled jobs + backup
+│   └── progress_measure.md      ← 8. target, per-run checks, feedback verdicts
 │
 ├── kdb/                         ← collected raw documents (CONTENTS gitignored, backed up)
 │   └── .gitkeep
@@ -56,9 +57,26 @@ Only the specs (`ai_specs/`) and the code (`src/`) live in git. That's everythin
 needed to regenerate `kdb/` and `wiki/` from scratch.
 
 ## How to start a project
-1. Fill in the seven `ai_specs/` files — start with `overview.md` and `oracle.md`.
+1. Fill in the eight `ai_specs/` files — start with `overview.md` and `oracle.md`.
 2. Implement/adjust the `src/` scripts for your sources.
 3. Run `python src/run_batch.py` once by hand to collect + distill + index + back up.
-4. Schedule it nightly (cron / Task Scheduler / a scheduled task).
-5. Query the distilled `wiki/` with your chatbot the next day.
-6. Update `progress.md` after each session.
+4. Apply the checks in `progress_measure.md`; fix specs (not outputs) until they pass.
+5. Schedule it nightly (cron / Task Scheduler / a scheduled task).
+6. Query the distilled `wiki/` with your chatbot the next day; record feedback
+   verdicts per `progress_measure.md`.
+7. Update `progress.md` after each session — and watch the target's trend
+   number rise across rounds.
+
+## The SD-KDP family — three versions
+
+| Version | Specs | For | Loop |
+| --- | --- | --- | --- |
+| **SD-KDP Lite** (`sd-kdp-lite/`) | 4 merged | learn the method in an afternoon; small static-corpus projects | light (verdict table) |
+| **SD-KDP** (this) | 8 | the reference version: per-concern spec files, one maintainer | light (`progress_measure.md`) |
+| **SIT-KB-AWP** (`sit-kb-awp/`) | 10 + agent roster | event-driven sources, dated append-only outputs, outcome-scored judgments, critic agent, two human owners | full control loop |
+
+Two graduation rules: **Lite → SD-KDP** when you want a dedicated file per
+concern (collection, distillation, output format as separate contracts).
+**Anything → SIT-KB-AWP** when a spec gains a **second owner** (domain expert
+vs. agent developer needing approval routing) or a **second clock**
+(event-driven arrival, validity dating, delayed verdict windows).

@@ -1,0 +1,22 @@
+# Data folders: contents change every run — data, not code.
+# Folders are tracked via .gitkeep; contents are backed up by src/backup.py.
+kdb/canon/*
+kdb/inbox/*
+wiki/*
+assessments/*
+!kdb/canon/.gitkeep
+!kdb/inbox/.gitkeep
+!wiki/.gitkeep
+!assessments/.gitkeep
+
+# Pipeline state, indexes, logs, backups
+.state/
+.index/
+backups/
+proposals/
+
+# Secrets & environments
+.env
+.venv/
+__pycache__/
+*.pyc
